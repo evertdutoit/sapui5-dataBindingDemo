@@ -1,0 +1,105 @@
+<mvc:View controllerName="edt.dataBindingDemo.controller.View1" 
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  displayBlock="true" 
+		  xmlns="sap.m"
+		  xmlns:l="sap.ui.layout"
+		  xmlns:t="sap.ui.table">
+	<Shell>
+		<App>
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<t:Table title="UI Table"
+								 rows="{animals>/names}"
+								 cellClick = "uiTableCellClick" >
+							<t:columns>
+								<t:Column>
+									<Label text="Name" />
+									<t:template>
+										<Text text="{animals>Name}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column>
+									<Label text="Place" />
+									<t:template>
+										<Text text="{animals>Place}" wrapping="false" />
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
+
+						<List headerText="Animals" 
+						      items="{animals>/names}" >
+							<items>
+								<StandardListItem
+									title="{animals>Name}"
+									description="{animals>Place}"
+									type="Active"
+									press="listOnPress" /> 
+							</items>
+						</List>
+						
+						<List id="AnimalListFactory"
+							  headerText="Animal List Factory"
+							  items="{
+								path: 'animals>/names',
+								factory: '.animalListFactory'
+							  }">
+						</List>
+
+						<l:HorizontalLayout allowWrapping="true"
+											content="{animals>/names}">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+										 header="{animals>Name}"
+										 subheader="{animals>Place}"
+										 headerImage="{animals>icon}"
+										 press="press">
+								<TileContent>
+									<ImageContent src="{animals>icon}" />
+								</TileContent>
+							</GenericTile>
+						</l:HorizontalLayout>
+
+						<Table headerText="Animals Table" 
+							   items="{animals>/names}" >
+							<columns>
+								<Column>
+									<Label text="Animal Name" />
+								</Column>
+								<Column>
+									<Label text="Animal Place" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{animals>Name}" />
+										<Text text="{animals>Place}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						<t:Table title="UI Table"
+								 rows="{animals>/names}">
+							<t:columns>
+								<t:Column>
+									<Label text="Name" />
+									<t:template>
+										<Text text="{animals>Name}" wrapping="false" />
+									</t:template>
+								</t:Column>
+								<t:Column>
+									<Label text="Place" />
+									<t:template>
+										<Text text="{animals>Place}" wrapping="false" />
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
